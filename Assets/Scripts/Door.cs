@@ -3,6 +3,10 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     public Transform destination;
+
+    public GameObject currentArea;
+    public GameObject nextArea;
+
     bool playerInRange;
     PlayerController player;
 
@@ -12,7 +16,13 @@ public class Door : MonoBehaviour
         {
             if (player.playerInteracting)
             {
+                nextArea.SetActive(true);
+
                 player.transform.position = destination.position;
+
+                player.playerInteracting = false;
+
+                currentArea.SetActive(false);
             }
         }
     }
