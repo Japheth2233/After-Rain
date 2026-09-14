@@ -22,7 +22,8 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.linearVelocity = moveInput * moveSpeed;
+        rb.linearVelocity =
+            new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
     }
 
     public void Move(InputAction.CallbackContext context)

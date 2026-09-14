@@ -1,8 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Bed : MonoBehaviour
+public class SceneDoor : MonoBehaviour
 {
+    public string nextScene;
+
     bool playerInRange;
     PlayerController player;
 
@@ -12,10 +14,7 @@ public class Bed : MonoBehaviour
         {
             if (player.playerInteracting)
             {
-                if (player.collectedPlants == 3)
-                {
-                    SceneManager.LoadScene("EndScreen");
-                }
+                SceneManager.LoadScene(nextScene);
             }
         }
     }
@@ -24,7 +23,9 @@ public class Bed : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            player = collision.gameObject.GetComponent<PlayerController>();
+            player =
+                collision.gameObject.GetComponent<PlayerController>();
+
             playerInRange = true;
         }
     }
