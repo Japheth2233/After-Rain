@@ -10,6 +10,12 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isGrounded;
 
+    public LayerMask groundLayer;
+    public float groundCheckDistance = 0.7f;
+
+    public Animator animator;
+    public SpriteRenderer spriteRenderer;
+
     Rigidbody2D rb;
 
     void Start()
@@ -19,8 +25,34 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        // Check if there is ground below the player
+        isGrounded = Physics2D.Raycast(
+            transform.position,
+            Vector2.down,
+            groundCheckDistance,
+            groundLayer
+        );
+
+        // Move left and right
         rb.linearVelocity =
-            new Vector2(movementInput.x * moveSpeed, rb.linearVelocity.y);
+            new Vector2(
+                movementInput.x * moveSpeed,
+                rb.linearVelocity.y
+            );
+
+        // Animation
+        animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
+        animator.SetBool("IsGrounded", isGrounded);
+
+        // Flip character
+        if (rb.linearVelocity.x > 0.01f)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (rb.linearVelocity.x < -0.01f)
+        {
+            spriteRenderer.flipX = true;
+        }
     }
 
     public void Move(InputAction.CallbackContext context)
@@ -30,26 +62,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (isGrounded)
+        if (context.started && isGrounded)
         {
             rb.linearVelocity =
-                new Vector2(rb.linearVelocity.x, jumpHeight);
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = true;
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isGrounded = false;
+                new Vector2(
+                    rb.linearVelocity.x,
+                    jumpHeight
+                );
         }
     }
 }
