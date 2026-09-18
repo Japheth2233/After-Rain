@@ -11,7 +11,8 @@ public class PlayerMovement : MonoBehaviour
     public bool isGrounded;
 
     public LayerMask groundLayer;
-    public float groundCheckDistance = 0.7f;
+    public Transform groundCheck;
+    public float groundCheckRadius = 0.2f;
 
     public Animator animator;
     public SpriteRenderer spriteRenderer;
@@ -26,12 +27,11 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         // Check if there is ground below the player
-        isGrounded = Physics2D.Raycast(
-            transform.position,
-            Vector2.down,
-            groundCheckDistance,
+        isGrounded = Physics2D.OverlapCircle(
+            groundCheck.position,
+            groundCheckRadius,
             groundLayer
-        );
+         );
 
         // Move left and right
         rb.linearVelocity =
