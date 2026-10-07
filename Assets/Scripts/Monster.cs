@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour
 {
-    public float moveSpeed = 2f;
+    public float moveSpeed = 1.5f;
     public float moveDistance = 2f;
     public float bounceForce = 6f;
 
@@ -58,6 +58,7 @@ public class Monster : MonoBehaviour
             PlayerHealth playerHealth =
                 collision.gameObject.GetComponent<PlayerHealth>();
 
+            // 玩家从上方落下来踩怪物
             if (
                 playerRb.linearVelocity.y < 0 &&
                 collision.transform.position.y >
@@ -72,9 +73,11 @@ public class Monster : MonoBehaviour
 
                 Destroy(gameObject);
             }
+
+            // 玩家从侧面碰怪物
             else
             {
-                playerHealth.Die();
+                playerHealth.TakeDamage();
             }
         }
     }
