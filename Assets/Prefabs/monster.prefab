@@ -183,3 +183,4 @@ MonoBehaviour:
   moveDistance: 2
   bounceForce: 6
   spriteRenderer: {fileID: 1995836416600937481}
+  deathSound: {fileID: 8300000, guid: 40663cf5b50a34b46b2a5071baa4dec8, type: 3}

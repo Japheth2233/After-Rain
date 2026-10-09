@@ -6,8 +6,19 @@ public class PlayerHealth : MonoBehaviour
     public int health = 3;
     public GameObject[] hearts;
 
+    public AudioClip hurtSound;
+
+    AudioSource audioSource;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     public void TakeDamage()
     {
+        audioSource.PlayOneShot(hurtSound);
+
         health -= 1;
 
         if (health >= 0)

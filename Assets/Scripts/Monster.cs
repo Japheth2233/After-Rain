@@ -8,6 +8,8 @@ public class Monster : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
 
+    public AudioClip deathSound;
+
     Rigidbody2D rb;
 
     float startX;
@@ -70,7 +72,11 @@ public class Monster : MonoBehaviour
                         playerRb.linearVelocity.x,
                         bounceForce
                     );
+                AudioSource playerAudio =
+                collision.gameObject.GetComponent<AudioSource>();
 
+                playerAudio.PlayOneShot(deathSound);
+                
                 Destroy(gameObject);
             }
 

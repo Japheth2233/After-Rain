@@ -17,11 +17,23 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public SpriteRenderer spriteRenderer;
 
+    public AudioClip landSound;
+
+    AudioSource audioSource;
+    bool wasGrounded;
+
     Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
+
+        wasGrounded = Physics2D.OverlapCircle(
+            groundCheck.position,
+            groundCheckRadius,
+            groundLayer
+        );
     }
 
     void FixedUpdate()
@@ -33,6 +45,13 @@ public class PlayerMovement : MonoBehaviour
             groundLayer
          );
 
+        if (isGrounded && !wasGrounded)
+        {
+            audioSource.PlayOneShot(landSound);
+        }
+
+        wasGrounded = isGrounded;
+
         // Move left and right
         rb.linearVelocity =
             new Vector2(
@@ -43,6 +62,7 @@ public class PlayerMovement : MonoBehaviour
         // Animation
         animator.SetFloat("Speed", Mathf.Abs(rb.linearVelocity.x));
         animator.SetBool("IsGrounded", isGrounded);
+        animator.SetFloat("YVelocity", rb.linearVelocity.y);
 
         // Flip character
         if (rb.linearVelocity.x > 0.01f)

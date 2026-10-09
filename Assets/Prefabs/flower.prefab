@@ -142,3 +142,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Flower
   levelManager: {fileID: 0}
+  collectSound: {fileID: 8300000, guid: 8881da0915c84144d82a5853aad8a1c0, type: 3}

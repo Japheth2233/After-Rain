@@ -153,8 +153,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 41.09}
-  m_SizeDelta: {x: 1054.37, y: 303.21}
+  m_AnchoredPosition: {x: 0, y: 130.12}
+  m_SizeDelta: {x: 1054.37, y: 125.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &47462790
 MonoBehaviour:
@@ -176,10 +176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'AFTER RAIN
-
-
-    The garden is alive again.'
+  m_text: Thank you for playing!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -431,7 +428,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -209}
+  m_AnchoredPosition: {x: 0, y: -8}
   m_SizeDelta: {x: 288.58, y: 60.86}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &491311375
@@ -564,7 +561,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -322}
+  m_AnchoredPosition: {x: 0, y: -121}
   m_SizeDelta: {x: 206.89, y: 90.57}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &609523563
